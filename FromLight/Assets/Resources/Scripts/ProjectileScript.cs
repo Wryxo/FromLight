@@ -14,6 +14,5 @@ public class ProjectileScript : MonoBehaviour {
             GetComponent<Collider2D>().isTrigger = true;
     }
     void Update() {
-			Debug.DrawLine(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
     }
 }
