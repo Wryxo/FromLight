@@ -13,6 +13,9 @@ public class ProjectileScript : MonoBehaviour {
         if (Config["bounces"] == 0)
             GetComponent<Collider2D>().isTrigger = true;
     }
+    void onCollisionEnter(Collision2D col) {
+
+    }
     void Update() {
         
     }
