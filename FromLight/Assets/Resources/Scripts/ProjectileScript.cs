@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BlockBuilder : MonoBehaviour {
-    public Sprite blockImage;
+public class ProjectileScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
