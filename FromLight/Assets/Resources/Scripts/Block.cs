@@ -6,8 +6,6 @@ public abstract class Block : MonoBehaviour {
 	public Sprite Image;
 
 	// Special resolves unordinary effects of a block
-	public abstract void Special(){
-	
-	}
+    public abstract void Special();
 
 }
