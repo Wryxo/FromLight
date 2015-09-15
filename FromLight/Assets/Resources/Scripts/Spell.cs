@@ -7,7 +7,7 @@ public class Spell {
 	public Block Blok;
 	public uint ManaCost;
 	public static Dictionary<string, Spell> SpellBook = new Dictionary<string, Spell> () {
-		{ "Spell1", new Spell(null, 10, 1, 0, 0, 0, 0) },
+		{ "Spell1", new Spell(null, 10, 5, 0, 0, 0, 1) },
 		{ "Spell2", new Spell(null, 30, 0, 0, 1, 0, 0) }
 	};
 
@@ -23,11 +23,18 @@ public class Spell {
 	public Spell(Block blok, uint manaCost, int bounces, int slowDown, int onFire, int magnetic, int gravity) {
 		this.Blok = blok;
 		this.ManaCost = manaCost;
+		this.Projectile = new Dictionary<string, int> ();
 		this.Projectile.Add ("bounces", bounces);
 		this.Projectile.Add ("slowDown", slowDown);
 		this.Projectile.Add ("onFire", onFire);
 		this.Projectile.Add ("magnetic", magnetic);
 		this.Projectile.Add ("gravity", gravity);
+	}
+
+	public Spell(Spell spell){
+		this.Blok = spell.Blok;
+		this.ManaCost = spell.ManaCost;
+		this.Projectile = new Dictionary<string, int> (spell.Projectile);
 	}
 
 

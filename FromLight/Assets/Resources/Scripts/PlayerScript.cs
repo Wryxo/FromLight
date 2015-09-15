@@ -27,16 +27,15 @@ public class PlayerScript : MonoBehaviour {
 		}
 	}
 
-	public GameObject Shoot(Vector3 mouse) {
+	public GameObject Shoot(Vector3 mouse, float forceQuotient) {
 		var currentSpell = AvailableSpells [SelectedSpell];
 		if (currentSpell.ManaCost <= Mana){
-			var go = Instantiate (Projektil, transform.position, Quaternion.identity) as GameObject;
-			var projektil = go.GetComponent<ProjectileScript> ();
-			//TODO: Uncomment next line
-			//projektil.load (AvailableSpells[SelectedSpell]);
 			float dist = Vector2.Distance (transform.position, mouse);
-			Vector2 direction = (transform.position - mouse) / dist;
-			projektil.GetComponent<Rigidbody2D>().AddForce(-direction * ShootForce, ForceMode2D.Impulse);
+			Vector3 direction = (transform.position - mouse) / dist;
+			var go = Instantiate (Projektil, transform.position - direction*1.1f, Quaternion.identity) as GameObject;
+			var projektil = go.GetComponent<ProjectileScript> ();
+			projektil.load (new Spell(currentSpell));
+			projektil.GetComponent<Rigidbody2D>().AddForce(-direction * ShootForce * forceQuotient, ForceMode2D.Impulse);
 			Mana = (uint)Mathf.Clamp(Mana-currentSpell.ManaCost, 0, ManaCap);
 			return go;
 		}

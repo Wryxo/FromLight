@@ -13,6 +13,7 @@ public class UserControl2D : MonoBehaviour
 	private PlayerScript m_Player;
 	private Vector3 m_Position;
 	private GameObject projektil;
+	private float force;
 	
 	private void Awake()
 	{
@@ -23,6 +24,19 @@ public class UserControl2D : MonoBehaviour
 	
 	private void Update()
 	{
+		if (CrossPlatformInputManager.GetButtonUp("Fire1")) {
+			m_Fire = false;
+			if (!projektil) {
+				m_Position = Camera.main.ScreenToWorldPoint(CrossPlatformInputManager.mousePosition);
+				projektil = m_Player.Shoot (m_Position, force/2);
+			} else {
+				var ps = projektil.GetComponent<ProjectileScript>();
+				if (ps.getOnFire() != 0) {
+					ps.resolve();
+				}
+			}
+			force = 0;
+		}
 		if (!m_Jump)
 		{
 			// Read the jump input in Update so button presses aren't missed.
@@ -31,6 +45,9 @@ public class UserControl2D : MonoBehaviour
 		if (!m_Fire) {
 			// Read the fire input in Update so button presses aren't missed.
 			m_Fire = CrossPlatformInputManager.GetButtonDown("Fire1");
+		}
+		if (m_Fire) {
+			force = Mathf.Clamp(force+Time.deltaTime, 0.7f, 2f);
 		}
 		if (m_QuickSlot != 0 && CrossPlatformInputManager.GetButtonDown("QuickSlot1")) {
 			m_QuickSlot = 0;
@@ -55,16 +72,7 @@ public class UserControl2D : MonoBehaviour
 		float h = CrossPlatformInputManager.GetAxis("Horizontal");
 		// Pass all parameters to the character control script.
 		m_Character.Move(h, m_Jump);
-		if (m_Fire) {
-			m_Fire = false;
-			if (!projektil) {
-				m_Position = Camera.main.ScreenToWorldPoint(CrossPlatformInputManager.mousePosition);
-				projektil = m_Player.Shoot (m_Position);
-			} else {
-				// TODO: Uncomment next line
-				//projektil.GetComponent<ProjectileScript>().resolve();
-			}
-		}
+
 		m_Player.SelectedSpell = m_QuickSlot;
 		m_Jump = false;
 	}

@@ -3,38 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ProjectileScript : MonoBehaviour {
-    private Dictionary<string, int> Config;
-    private Block Blok;
+    private Dictionary<string, int> config;
+    private Block blok;
     private Rigidbody2D rb;
 
     public void load(Spell spell) {
-        Config = spell.Projectile;
-        Blok = spell.Blok;
+        config = spell.Projectile;
+        blok = spell.Blok;
 
-        if (Config["bounces"] == 0)
+        if (config["bounces"] == 0)
             GetComponent<Collider2D>().isTrigger = true;
-        if (Config["gravity"] == 0)
+        if (config["gravity"] == 0)
             rb.gravityScale = 0;
     }
-    private void resolve() {
+    public void resolve() {
         Destroy(gameObject);
-        throw new System.NotImplementedException();
     }
-    void onCollisionEnter(Collision2D col) {
-        if (col.gameObject.tag != "ground")
-            return;
-
-        if (Config["bounces"] == 1)
-            resolve();
-        else
-            Config["bounces"]--;
+    void OnCollisionEnter2D(Collision2D col) {
+		Debug.Log ("tuk " + config ["bounces"]);
+        if (config ["bounces"] == 1)
+			resolve ();
+		else {
+			config ["bounces"]--;
+		}
     }
+	public int getOnFire(){
+		return config ["onFire"];
+	}
     void Start() {
         rb = GetComponent<Rigidbody2D>();
     }
     void Update() {
     }
     void FixedUpdate() {
-        rb.velocity *= 1f - ((float)Config["slowdown"]) / 100f;
+        rb.velocity *= (1f - ((float)config["slowDown"]) / 100f);
+		if (Mathf.Abs(rb.velocity.x) < 0.2f && rb.velocity.magnitude < 5f && config["slowDown"] != 0) {
+			resolve ();
+		}
     }
 }

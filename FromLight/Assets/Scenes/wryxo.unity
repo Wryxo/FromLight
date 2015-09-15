@@ -493,7 +493,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11432910, guid: a626434224ab7b0479c8cff894f260dc, type: 2}
       propertyPath: ShootForce
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 11432910, guid: a626434224ab7b0479c8cff894f260dc, type: 2}
       propertyPath: ManaCap
@@ -506,6 +506,10 @@ Prefab:
     - target: {fileID: 11432910, guid: a626434224ab7b0479c8cff894f260dc, type: 2}
       propertyPath: Mana
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423406, guid: a626434224ab7b0479c8cff894f260dc, type: 2}
+      propertyPath: m_JumpForce
+      value: 800
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a626434224ab7b0479c8cff894f260dc, type: 2}
