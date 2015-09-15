@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ProjectileScript : MonoBehaviour {
-    public Dictionary<string, int> Config;
+    private Dictionary<string, int> Config;
+    private Block Blok;
 
-    public void load(Dictionary<string, int> config) {
-        this.Config = config;
+    public void load(Spell spell) {
+        Config = spell.Projectile;
+        Blok = spell.Blok;
 
-        if (config["bounces"] == 0)
+        if (Config["bounces"] == 0)
             GetComponent<Collider2D>().isTrigger = true;
     }
     void Update() {
