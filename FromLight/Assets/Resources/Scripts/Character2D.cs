@@ -4,6 +4,7 @@ using UnityEngine;
 public class Character2D : MonoBehaviour
 {
     [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
+    [SerializeField] private float m_Acceleration = 0.2f;                    // Player acceleration per frame.
     [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
     [SerializeField] [Range(0, 1)]private float m_AirSpeed = 0.5f;                 // Whether or not a player can steer while jumping;
     [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
@@ -52,22 +53,21 @@ public class Character2D : MonoBehaviour
         //only control the player if grounded or airControl is turned on
         if (m_Grounded || m_AirControl)
         {
-			move = m_AirControl ? move * m_AirSpeed : move;
-
             // The Speed animator parameter is set to the absolute value of the horizontal input.
             m_Anim.SetFloat("Speed", Mathf.Abs(move));
 
-            // Move the character
-            m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
+            // Move the character, na zemi mam absolute control, vo vzduchu len akceleracny control
+			m_Rigidbody2D.velocity = m_Grounded ? new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y) : m_Rigidbody2D.velocity + new Vector2(move*m_Acceleration, 0);
+			m_Rigidbody2D.velocity = new Vector2(Mathf.Clamp(m_Rigidbody2D.velocity.x, -m_MaxSpeed, m_MaxSpeed), m_Rigidbody2D.velocity.y);
 
             // If the input is moving the player right and the player is facing left...
-            if (move > 0 && !m_FacingRight)
+			if (move > 0 && !m_FacingRight)
             {
                 // ... flip the player.
                 Flip();
             }
-                // Otherwise if the input is moving the player left and the player is facing right...
-            else if (move < 0 && m_FacingRight)
+            // Otherwise if the input is moving the player left and the player is facing right...
+			else if (move < 0 && m_FacingRight)
             {
                 // ... flip the player.
                 Flip();
