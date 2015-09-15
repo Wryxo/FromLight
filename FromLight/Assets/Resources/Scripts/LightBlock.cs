@@ -5,7 +5,7 @@ namespace AssemblyCSharp
 	public class LightBlock : Block
 	{
 		void Start(){
-			this.Duration = 3f;
+			this.Duration = 15f;
 			this.Image = new Sprite ();
 		}
 		
