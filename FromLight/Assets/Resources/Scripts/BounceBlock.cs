@@ -11,16 +11,15 @@ using System;
 using UnityEngine;
 namespace AssemblyCSharp
 {
-	public class LightBlock : Block
+	public class BounceBlock : Block
 	{
 		void Start(){
-			this.Duration = 15f;
+			this.Duration = 5f;
 			this.Image = new Sprite ();
 		}
 		
 		void Update(){
 			this.Duration -= Time.deltaTime;
-			this.Special ();
 			if (this.Duration < 0) {
 				Destroy(gameObject);
 			}

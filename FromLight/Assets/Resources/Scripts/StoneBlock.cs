@@ -4,7 +4,7 @@ using System.Collections;
 public class StoneBlock : Block
 {
 		void Start(){
-			this.Duration = 5f;
+			this.Duration = 10f;
 			this.Image = new Sprite();
 		}
 
