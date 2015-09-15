@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Block : MonoBehaviour {
+public abstract class Block : MonoBehaviour {
+	public float Duration;
+	public Sprite Image;
 
-	// Use this for initialization
-	void Start () {
+	// Special resolves unordinary effects of a block
+	public abstract void Special(){
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }
