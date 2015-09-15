@@ -20,11 +20,11 @@ public class StoneBlock : Block
 		void Update(){
 			this.Duration -= Time.deltaTime;
 			if (this.Duration < 0) {
-				Destroy();
+				Destroy(gameObject);
 			}
 		}
 		
-		void Special(){
+		override public void Special(){
 			return;
 		}
 }
