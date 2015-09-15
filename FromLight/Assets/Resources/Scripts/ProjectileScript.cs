@@ -14,6 +14,6 @@ public class ProjectileScript : MonoBehaviour {
             GetComponent<Collider2D>().isTrigger = true;
     }
     void Update() {
-
+        
     }
 }
