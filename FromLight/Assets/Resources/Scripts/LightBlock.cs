@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
+using UnityEngine;
 namespace AssemblyCSharp
 {
 	public class LightBlock : Block
@@ -21,12 +22,12 @@ namespace AssemblyCSharp
 			this.Duration -= Time.deltaTime;
 			this.Special ();
 			if (this.Duration < 0) {
-				Destroy();
+				Destroy(gameObject);
 			}
 		}
 
 		//this block attracts enemies
-		void Special(){
+		public override void Special(){
 			return;
 		}
 	}
