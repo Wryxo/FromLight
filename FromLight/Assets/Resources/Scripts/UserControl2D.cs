@@ -26,7 +26,7 @@ public class UserControl2D : MonoBehaviour
 		}
 		if (!m_Fire) {
 			// Read the fire input in Update so button presses aren't missed.
-			m_Fire = CrossPlatformInputManager.GetButtonDown("Fire");
+			m_Fire = CrossPlatformInputManager.GetButtonDown("Fire1");
 		}
 	}
 	
@@ -38,6 +38,7 @@ public class UserControl2D : MonoBehaviour
 		m_Character.Move(h, m_Jump);
 		m_Character.Fire (m_Fire);
 		m_Jump = false;
+		m_Fire = false;
 	}
 }
 
