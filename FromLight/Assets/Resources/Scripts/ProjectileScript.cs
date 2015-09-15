@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ProjectileScript : MonoBehaviour {
+    public Dictionary<string, int> Config;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public void load(Dictionary<string, int> config) {
+        this.Config = config;
+
+        if (config["bounces"] == 0)
+            GetComponent<Collider2D>().isTrigger = true;
+    }
+    void Update() {
+
+    }
 }
