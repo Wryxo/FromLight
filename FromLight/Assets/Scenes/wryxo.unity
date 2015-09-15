@@ -507,6 +507,10 @@ Prefab:
       propertyPath: m_JumpForce
       value: 700
       objectReference: {fileID: 0}
+    - target: {fileID: 5003228, guid: 18da89e1756ebd74a9698fe5bb2f7964, type: 2}
+      propertyPath: m_GravityScale
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18da89e1756ebd74a9698fe5bb2f7964, type: 2}
   m_IsPrefabParent: 0
