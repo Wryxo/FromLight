@@ -15,7 +15,7 @@ public class StoneBlock : Block
 			}
 		}
 		
-		public override void Special(){
+        public override void Special() {
 			return;
 		}
 }

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class StageScript : MonoBehaviour {
-
     List<int> requiredSpells;
 
 	// Use this for initialization
