@@ -57,7 +57,7 @@ public class GenerateScript : MonoBehaviour {
                 stage.transform.position = lastPoint;
                 lastPoint = stage.transform.position;
                 //resources
-                stage.GetComponent<StageScript>
+                
             }
             generateIsland(lastPoint);
         }
