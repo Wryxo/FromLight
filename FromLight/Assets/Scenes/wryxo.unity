@@ -135,7 +135,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -511,6 +511,10 @@ Prefab:
       propertyPath: m_JumpForce
       value: 800
       objectReference: {fileID: 0}
+    - target: {fileID: 11432910, guid: a626434224ab7b0479c8cff894f260dc, type: 2}
+      propertyPath: Projektil
+      value: 
+      objectReference: {fileID: 152586, guid: 47b300abf8dac4d479e9f53d33d9f767, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a626434224ab7b0479c8cff894f260dc, type: 2}
   m_IsPrefabParent: 0

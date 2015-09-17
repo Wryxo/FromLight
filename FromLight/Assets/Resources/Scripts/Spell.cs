@@ -7,7 +7,7 @@ public class Spell {
 	public Block Blok;
 	public uint ManaCost;
 	public static Dictionary<string, Spell> SpellBook = new Dictionary<string, Spell> () {
-		{ "Spell1", new Spell(null, 10, 5, 0, 0, 0, 1) },
+		{ "Spell1", new Spell(null, 10, 4, 5, 0, 0, 1) },
 		{ "Spell2", new Spell(null, 30, 0, 0, 1, 0, 0) }
 	};
 

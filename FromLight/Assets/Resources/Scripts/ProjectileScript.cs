@@ -20,15 +20,14 @@ public class ProjectileScript : MonoBehaviour {
         Destroy(gameObject);
     }
     void OnCollisionEnter2D(Collision2D col) {
-		Debug.Log ("tuk " + config ["bounces"]);
-        if (config ["bounces"] == 1)
+        if (config["bounces"] == 1)
 			resolve ();
 		else {
-			config ["bounces"]--;
+			config["bounces"]--;
 		}
     }
 	public int getOnFire(){
-		return config ["onFire"];
+		return config["onFire"];
 	}
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -38,7 +37,7 @@ public class ProjectileScript : MonoBehaviour {
     void FixedUpdate() {
         rb.velocity *= (1f - ((float)config["slowDown"]) / 100f);
 		if (Mathf.Abs(rb.velocity.x) < 0.2f && rb.velocity.magnitude < 5f && config["slowDown"] != 0) {
-			resolve ();
+			resolve();
 		}
     }
 }
