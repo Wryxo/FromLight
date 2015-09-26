@@ -32,16 +32,17 @@ public class GenerateScript : MonoBehaviour {
     }
 
     public void generateNextPoint() {
-        //horizontalDirection == true => came from right, else came from left
-        bool horizontalDirection = lastCheckpoint.transform.position.x > currentCheckpoint.transform.position.x;
+        //horizontalDirection == true => came from right, else came from left - if lastCheckpoint is unset, choose whichever
+        bool horizontalDirection = (lastCheckpoint == null) ? Random.value>0.5f : lastCheckpoint.transform.position.x > currentCheckpoint.transform.position.x;
+        // TODO: destroy the platform
         if (lastCheckpoint != null) Destroy(lastCheckpoint);
         lastCheckpoint = currentCheckpoint;
-        Vector2 lastPoint = lastCheckpoint.transform.position;
+        Vector3 lastPoint = lastCheckpoint.transform.position;
         // TODO: decide between building blocks and simple transition
-        if (true)
+        if (Random.value > 0.5f)
         {
             //simple
-            Vector2 point = new Vector2(Random.Range(20f,40f), Random.RandomRange(3f,30f));
+            Vector3 point = new Vector2(Random.Range(20f,40f), Random.RandomRange(3f,30f));
             if (Random.value > 0.5f) point.x = -1f * point.x;
             generateIsland(point);
             // TODO: assign blocks
@@ -53,11 +54,10 @@ public class GenerateScript : MonoBehaviour {
             {
                 //stages - always generate towards the direction opposite to the one player just came from
                 GameObject stage = horizontalDirection ? getLeftStage() : getRightStage();
-                //stage origin is also it's entry point
+                //the start point of a stage should always be 0,0,0 (relative to the stage parent object)
                 stage.transform.position = lastPoint;
-                lastPoint = stage.transform.position;
-                //resources
-                
+                lastPoint = stage.transform.Find("ExitPoint").position;
+                // TODO: assign blocks       
             }
             generateIsland(lastPoint);
         }
@@ -71,13 +71,13 @@ public class GenerateScript : MonoBehaviour {
     // TODO: get random
     private GameObject getLeftStage()
     {
-        return Instantiate(Resources.Load("Prefabs/Generator/Stages/", typeof(GameObject))) as GameObject;
+        return Instantiate(Resources.Load("Prefabs/Generator/Stages/Left/TestLeftStage", typeof(GameObject))) as GameObject;
     }
 
     // TODO: get random
     private GameObject getRightStage()
     {
-        return Instantiate(Resources.Load("Prefabs/Generator/Stages/", typeof(GameObject))) as GameObject;
+        return Instantiate(Resources.Load("Prefabs/Generator/Stages/Right/TestRightStage", typeof(GameObject))) as GameObject;
     }
 
     private void generateIsland(Vector2 point)
