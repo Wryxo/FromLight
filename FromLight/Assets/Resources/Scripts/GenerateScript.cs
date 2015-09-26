@@ -25,7 +25,7 @@ public class GenerateScript : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("x"))
         {
             generateNextPoint();
         }

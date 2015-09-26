@@ -4,28 +4,32 @@ using System.Collections.Generic;
 
 public class PlayerScript : MonoBehaviour {
     public uint Mana, ManaCap, ManaRegen;
-	public List<Spell> AvailableSpells;
-	public int SelectedSpell = 0;
-	public GameObject Projektil;
-	public int ShootForce = 5;
+    public List<Spell> AvailableSpells;
+    public int SelectedSpell = 0;
+    public GameObject Projektil;
+    public int ShootForce = 5;
 
-	private GameObject player;
-	private float sec;
+    private GameObject player;
+    private float sec;
 
-	void Start() {
-		AvailableSpells = new List<Spell> ();
-		AvailableSpells.Add (Spell.SpellBook["Spell1"]);
-		AvailableSpells.Add (Spell.SpellBook["Spell2"]);
-		Mana = ManaCap;
-	}
+    void Start() {
+        AvailableSpells = new List<Spell>();
+        AvailableSpells.Add(Spell.SpellBook["Spell1"]);
+        AvailableSpells.Add(Spell.SpellBook["Spell2"]);
+        Mana = ManaCap;
+    }
 
-	void Update() {
-		sec += Time.deltaTime;
-		if (sec > 1f) {
-			Mana = (uint)Mathf.Clamp(Mana+ManaRegen,0,ManaCap);
-			sec = 0;
-		}
-	}
+    void Update() {
+        sec += Time.deltaTime;
+        if (sec > 1f) {
+            Mana = (uint)Mathf.Clamp(Mana + ManaRegen, 0, ManaCap);
+            sec = 0;
+        }
+    }
+
+    public void ReplaceSpells(List<Spell> spells) {
+        AvailableSpells = spells;
+    }
 
 	public GameObject Shoot(Vector3 mouse, float forceQuotient) {
 		var currentSpell = AvailableSpells [SelectedSpell];

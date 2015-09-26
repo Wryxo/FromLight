@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MaxSpeed: 8
   m_Acceleration: 1.20000005
-  m_JumpForce: 700
+  m_JumpForce: 800
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
@@ -179,12 +179,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc93d743b418eb548be4a3c83f339dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mana: 0
-  ManaCap: 0
-  ManaRegen: 0
+  Mana: 100
+  ManaCap: 100
+  ManaRegen: 10
   SelectedSpell: 0
-  Projektil: {fileID: 198794, guid: 5765771c04d920c46af40a040b85725f, type: 2}
-  ShootForce: 100
+  Projektil: {fileID: 152586, guid: 47b300abf8dac4d479e9f53d33d9f767, type: 2}
+  ShootForce: 40
 --- !u!114 &11468592
 MonoBehaviour:
   m_ObjectHideFlags: 1
