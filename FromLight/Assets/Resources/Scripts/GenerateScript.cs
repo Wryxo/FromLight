@@ -54,12 +54,14 @@ public class GenerateScript : MonoBehaviour {
             int limit = Random.RandomRange(1,3);
             for (int i=0;i< limit;i++)
             {
+                GameObject stage;
                 //stages - always generate towards the direction opposite to the one player just came from
-                GameObject stage = horizontalDirection ? getLeftStage() : getRightStage();
+                do {
+                    stage = horizontalDirection ? getLeftStage() : getRightStage();
+                } while (!stage.GetComponent<StageScript>().TrySpellset(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().AvailableSpells));
                 //the start point of a stage should always be 0,0,0 (relative to the stage parent object)
                 stage.transform.position = lastPoint;
                 lastPoint = stage.transform.Find("ExitPoint").position;
-                    //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().ReplaceSpells(replaceSpells);
             }
             generateIsland(lastPoint);
         }

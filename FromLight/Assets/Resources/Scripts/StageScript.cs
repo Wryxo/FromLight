@@ -29,9 +29,9 @@ public class StageScript : MonoBehaviour {
     //tries to add spells required for this stage
     //returns false if impossible
     public bool TrySpellset(List<Spell> AvailibleSpells) {
-        //TODO
+        //TODO - actual functionality
         AvailibleSpells.Clear();
-        
+        AvailibleSpells.AddRange(RequiredSpells);
         return false;
     }
 }
