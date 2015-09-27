@@ -49,31 +49,37 @@ public class UserControl2D : MonoBehaviour
 		if (m_Fire) {
 			force = Mathf.Clamp(force+Time.deltaTime, 0.7f, 2f);
 		}
-		if (m_QuickSlot != 0 && CrossPlatformInputManager.GetButtonDown("QuickSlot1")) {
-			m_QuickSlot = 0;
+		if (m_Player.SelectedSpell != 0 && CrossPlatformInputManager.GetButtonDown("QuickSlot1")) {
+			m_Player.SelectedSpell = 0;
 		}
-		if (m_QuickSlot != 1 && CrossPlatformInputManager.GetButtonDown("QuickSlot2")) {
-			m_QuickSlot = 1;
+		if (m_Player.SelectedSpell != 1 && CrossPlatformInputManager.GetButtonDown("QuickSlot2")) {
+			if (m_Player.AvailableSpells.Count > 1)
+				m_Player.SelectedSpell = 1;
 		}
-		if (m_QuickSlot != 2 && CrossPlatformInputManager.GetButtonDown("QuickSlot3")) {
-			m_QuickSlot = 2;
+		if (m_Player.SelectedSpell != 2 && CrossPlatformInputManager.GetButtonDown("QuickSlot3")) {
+			if (m_Player.AvailableSpells.Count > 2)
+				m_Player.SelectedSpell = 2;
 		}
-		if (m_QuickSlot != 3 && CrossPlatformInputManager.GetButtonDown("QuickSlot4")) {
-			m_QuickSlot = 3;
+		if (m_Player.SelectedSpell != 3 && CrossPlatformInputManager.GetButtonDown("QuickSlot4")) {
+			if (m_Player.AvailableSpells.Count > 3)
+				m_Player.SelectedSpell = 3;
 		}
-		if (m_QuickSlot != 4 && CrossPlatformInputManager.GetButtonDown("QuickSlot5")) {
-			m_QuickSlot = 4;
+		if (m_Player.SelectedSpell != 4 && CrossPlatformInputManager.GetButtonDown("QuickSlot5")) {
+			if (m_Player.AvailableSpells.Count > 4)
+				m_Player.SelectedSpell = 4;
 		}
 	}
-	
 	
 	private void FixedUpdate()
 	{
 		float h = CrossPlatformInputManager.GetAxis("Horizontal");
+		if (!CrossPlatformInputManager.GetButton ("Horizontal")) {
+			h = 0;
+		} else {
+			h = Mathf.Sign(h);
+		}
 		// Pass all parameters to the character control script.
 		m_Character.Move(h, m_Jump);
-
-		m_Player.SelectedSpell = m_QuickSlot;
 		m_Jump = false;
 	}
 }

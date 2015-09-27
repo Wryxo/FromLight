@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 public class ProjectileScript : MonoBehaviour {
     private Dictionary<string, int> config;
-    private Block blok;
+    private BlockScript blok;
     private Rigidbody2D rb;
 
     public void load(Spell spell) {
+        rb = GetComponent<Rigidbody2D>();
         config = spell.Projectile;
         blok = spell.Blok;
 
@@ -29,11 +30,7 @@ public class ProjectileScript : MonoBehaviour {
 	public int getOnFire(){
 		return config["onFire"];
 	}
-    void Start() {
-        rb = GetComponent<Rigidbody2D>();
-    }
-    void Update() {
-    }
+
     void FixedUpdate() {
         rb.velocity *= (1f - ((float)config["slowDown"]) / 100f);
 		if (Mathf.Abs(rb.velocity.x) < 0.2f && rb.velocity.magnitude < 5f && config["slowDown"] != 0) {

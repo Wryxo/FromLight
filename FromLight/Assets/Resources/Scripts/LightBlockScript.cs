@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 namespace AssemblyCSharp
 {
-	public class LightBlock : Block
+	public class LightBlockScript : BlockScript
 	{
 		void Start(){
 			this.Duration = 15f;

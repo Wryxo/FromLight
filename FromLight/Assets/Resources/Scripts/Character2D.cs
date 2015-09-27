@@ -4,7 +4,7 @@ using UnityEngine;
 public class Character2D : MonoBehaviour
 {
     [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
-    [SerializeField] private float m_Acceleration = 0.2f;                    // Player acceleration per frame.
+    [SerializeField] private float m_Acceleration = 2f;                    // Player acceleration per frame.
     [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
     [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
     [SerializeField] private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character

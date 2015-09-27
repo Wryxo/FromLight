@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class StoneBlock : Block
+public class StoneBlockScript : BlockScript
 {
 		void Start(){
-			this.Duration = 10f;
+			this.Duration = 20f;
 			this.Image = new Sprite();
 		}
 

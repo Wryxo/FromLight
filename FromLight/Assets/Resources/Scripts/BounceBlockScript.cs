@@ -11,7 +11,7 @@ using System;
 using UnityEngine;
 namespace AssemblyCSharp
 {
-	public class BounceBlock : Block
+	public class BounceBlockScript : BlockScript
 	{
 		void Start(){
 			this.Duration = 5f;
