@@ -20,6 +20,8 @@ public class UIPlayerScript : MonoBehaviour {
 
     public void ReplaceSpellButtons() {
         int id = 0;
+        spellBar = spellBar ?? GameObject.FindGameObjectWithTag("SpellBar");
+        Debug.Log(spellBar);
         foreach (Transform child in spellBar.transform) {
             Destroy(child.gameObject);
         }
