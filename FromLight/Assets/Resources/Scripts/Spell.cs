@@ -8,7 +8,8 @@ public class Spell {
 	public uint ManaCost;
 	public static Dictionary<string, Spell> SpellBook = new Dictionary<string, Spell> () {
 		{ "Spell1", new Spell(null, 10, 4, 5, 0, 0, 1) },
-		{ "Spell2", new Spell(null, 30, 4, 0, 1, 0, 0) }
+		{ "Spell2", new Spell(null, 30, 0, 0, 1, 0, 0) },
+		{ "Spell3", new Spell(null, 30, 0, 0, 1, 1, 0) },
 	};
 
 	/*
@@ -36,6 +37,4 @@ public class Spell {
 		this.ManaCost = spell.ManaCost;
 		this.Projectile = new Dictionary<string, int> (spell.Projectile);
 	}
-
-
 }

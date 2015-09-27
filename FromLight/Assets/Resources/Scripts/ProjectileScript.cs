@@ -27,6 +27,10 @@ public class ProjectileScript : MonoBehaviour {
 			config["bounces"]--;
 		}
     }
+	public int getMagnetic() {
+		return config ["magnetic"];
+	}
+
 	public int getOnFire(){
 		return config["onFire"];
 	}
