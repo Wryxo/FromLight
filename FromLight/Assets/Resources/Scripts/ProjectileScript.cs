@@ -8,6 +8,7 @@ public class ProjectileScript : MonoBehaviour {
     private Rigidbody2D rb;
 
     public void load(Spell spell) {
+        rb = GetComponent<Rigidbody2D>();
         config = spell.Projectile;
         blok = spell.Blok;
 
@@ -30,7 +31,6 @@ public class ProjectileScript : MonoBehaviour {
 		return config["onFire"];
 	}
     void Start() {
-        rb = GetComponent<Rigidbody2D>();
     }
     void Update() {
     }
