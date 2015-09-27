@@ -127,7 +127,7 @@ Prefab:
     - target: {fileID: 11482242, guid: b46967c3e1431e346a8f6d86be652eba, type: 2}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1810133297}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b46967c3e1431e346a8f6d86be652eba, type: 2}
   m_IsPrefabParent: 0
@@ -188,7 +188,7 @@ GameObject:
   - 222: {fileID: 1593572711}
   - 114: {fileID: 1593572710}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ManaBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,9 +326,33 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11432910, guid: a626434224ab7b0479c8cff894f260dc, type: 2}
+      propertyPath: ManaRegen
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a626434224ab7b0479c8cff894f260dc, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1810133295 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 149640, guid: a626434224ab7b0479c8cff894f260dc, type: 2}
+  m_PrefabInternal: {fileID: 1810133294}
+--- !u!114 &1810133296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1810133295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b977df020ada1b44aeb12d386e3548f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ManaBar: {fileID: 1593572709}
+--- !u!4 &1810133297 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 493300, guid: a626434224ab7b0479c8cff894f260dc, type: 2}
+  m_PrefabInternal: {fileID: 1810133294}
 --- !u!1 &1852414952
 GameObject:
   m_ObjectHideFlags: 0
