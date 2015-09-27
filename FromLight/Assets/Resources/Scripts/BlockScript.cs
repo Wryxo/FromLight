@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public abstract class Block : MonoBehaviour {
+public abstract class BlockScript : MonoBehaviour {
 	public float Duration;
 	public Sprite Image;
 

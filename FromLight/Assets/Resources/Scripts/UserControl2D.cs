@@ -78,7 +78,6 @@ public class UserControl2D : MonoBehaviour
 		} else {
 			h = Mathf.Sign(h);
 		}
-		Debug.Log (h);
 		// Pass all parameters to the character control script.
 		m_Character.Move(h, m_Jump);
 		m_Jump = false;
