@@ -25,8 +25,7 @@ public class GenerateScript : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (Input.GetKeyDown("x"))
-        {
+        if (Input.GetKeyDown("x")) {
             generateNextPoint();
         }
     }
@@ -34,8 +33,11 @@ public class GenerateScript : MonoBehaviour {
     public void generateNextPoint() {
         //horizontalDirection == true => came from right, else came from left - if lastCheckpoint is unset, choose whichever
         bool horizontalDirection = (lastCheckpoint == null) ? Random.value>0.5f : lastCheckpoint.transform.position.x > currentCheckpoint.transform.position.x;
-        // TODO: destroy the platform
+        // destroy previous path
         if (lastCheckpoint != null) Destroy(lastCheckpoint);
+        foreach(var block in blocks) {
+            Destroy(block);
+        }
         lastCheckpoint = currentCheckpoint;
         Vector3 lastPoint = lastCheckpoint.transform.position;
         // TODO: decide between building blocks and simple transition
@@ -45,7 +47,7 @@ public class GenerateScript : MonoBehaviour {
             Vector3 point = new Vector2(Random.Range(20f,40f), Random.RandomRange(3f,30f));
             if (Random.value > 0.5f) point.x = -1f * point.x;
             generateIsland(point);
-            // TODO: assign blocks
+            //simple transition always with same blocks as previous
         } else
         {
             // TODO make this less random
@@ -57,7 +59,7 @@ public class GenerateScript : MonoBehaviour {
                 //the start point of a stage should always be 0,0,0 (relative to the stage parent object)
                 stage.transform.position = lastPoint;
                 lastPoint = stage.transform.Find("ExitPoint").position;
-                // TODO: assign blocks       
+                    //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().ReplaceSpells(replaceSpells);
             }
             generateIsland(lastPoint);
         }

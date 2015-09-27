@@ -25,6 +25,7 @@ public class UIPlayerScript : MonoBehaviour {
             GameObject button = Instantiate(Resources.Load("Prefabs/Buttons/SpellButton", typeof(GameObject))) as GameObject;
             button.GetComponent<ButtonScript>().SpellId = id;
             button.GetComponent<Transform>().SetParent(SpellBar.GetComponent<Transform>(), false);
+            id++;
         }
     }
 }
