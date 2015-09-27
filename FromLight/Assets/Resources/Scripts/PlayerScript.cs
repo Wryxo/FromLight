@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour {
         AvailableSpells = new List<Spell>();
         AvailableSpells.Add(Spell.SpellBook["Spell1"]);
         AvailableSpells.Add(Spell.SpellBook["Spell2"]);
+        gameObject.GetComponent<UIPlayerScript>().ReplaceSpellButtons();
         Mana = ManaCap;
     }
 
