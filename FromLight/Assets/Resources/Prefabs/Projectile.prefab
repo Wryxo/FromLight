@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8487f4f30098e1f48a65271de713c4f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockObject: {fileID: 156774, guid: 6f4908046a14b324ebedc9c911d40622, type: 2}
 --- !u!198 &19885906
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1200,6 +1201,10 @@ Prefab:
       propertyPath: ShapeModule.radius
       value: .100000001
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: blockObject
+      value: 
+      objectReference: {fileID: 156774, guid: 6f4908046a14b324ebedc9c911d40622, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152586}
