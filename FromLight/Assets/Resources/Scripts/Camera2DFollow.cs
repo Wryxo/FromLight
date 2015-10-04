@@ -18,6 +18,7 @@ public class Camera2DFollow : MonoBehaviour
     private void Start()
     {
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
+        Debug.Log(target);
         m_LastTargetPosition = target.position;
         m_OffsetZ = (transform.position - target.position).z;
         transform.parent = null;

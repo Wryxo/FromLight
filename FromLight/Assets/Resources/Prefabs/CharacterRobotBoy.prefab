@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 480240}
   - 212: {fileID: 21297152}
-  - 95: {fileID: 9565628}
+  - 95: {fileID: 9578570}
   - 58: {fileID: 5888290}
   - 61: {fileID: 6109456}
   - 50: {fileID: 5050332}
@@ -73,8 +73,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.44999981, y: -2.66000009, z: 0}
-  m_LocalScale: {x: 1.77153289, y: 1.77153039, z: 1}
+  m_LocalPosition: {x: -6.64563847, y: -2.38336611, z: 0}
+  m_LocalScale: {x: 1.77153289, y: 1.77153039, z: 0}
   m_Children:
   - {fileID: 486846}
   - {fileID: 476080}
@@ -118,9 +118,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -.449999988}
+  m_Offset: {x: -.0700000003, y: -.25}
   serializedVersion: 2
-  m_Radius: .159999996
+  m_Radius: .239999995
 --- !u!61 &6109456
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -131,10 +131,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -.0900000036, y: 0}
   serializedVersion: 2
-  m_Size: {x: .25, y: .680000007}
---- !u!95 &9565628
+  m_Size: {x: .430000007, y: .769999981}
+--- !u!95 &9578570
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -143,9 +143,9 @@ Animator:
   m_GameObject: {fileID: 191436}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5fc43f0c4b413534ba12c51c0e5e5f6f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 277df30179953b04d8feb04c17f83f6a, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 1
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -180,8 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b977df020ada1b44aeb12d386e3548f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ManaBar: {fileID: 0}
-  SpellBar: {fileID: 0}
 --- !u!114 &11449522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,9 +230,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1783731295
+  m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 8fb98a6035269e64a998f9b56828fc4f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aadaef0cb8ef23d4d9a8d15a1b5873e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -250,6 +248,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SpellBar
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
