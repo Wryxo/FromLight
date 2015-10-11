@@ -2,13 +2,15 @@
 using System.Collections;
 
 public class ForgleScript : MonoBehaviour {
-    public float ForgleAcceleration, ForgleSpeed, knockbackPower;
+    public float ForgleAcceleration, ForgleSpeed;
+    public int knockbackPower;
     public GameObject WaypointParent;
 
     private Transform[] waypoints;
     private int currentWaypointI;
     private Vector2 nextWaypoint;
     private Rigidbody2D rb;
+    private bool facingRight = true;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -68,15 +70,25 @@ public class ForgleScript : MonoBehaviour {
         rb.AddForce(direction * ForgleAcceleration * rb.mass);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, ForgleSpeed * rb.mass);
 	}
+    void Update() {
+        if (facingRight && rb.velocity.x < 0) {
+            facingRight = false;
+            transform.localScale = new Vector3(-1.0f, 1f, 1f);
+        } else if (!facingRight && rb.velocity.x > 0) {
+            facingRight = true;
+            transform.localScale = new Vector3(1.0f, 1f, 1f);
+        }
+    }
     void OnCollisionEnter2D(Collision2D c) {
         if (c.gameObject.tag == "Player") {
-            Vector2 direction = Vector2.up;
-            if (c.transform.position.x <= transform.position.x)
-                direction += Vector2.left * 3;
-            else
-                direction += Vector2.right * 3;
+            Vector2 direction = Random.insideUnitCircle.normalized;
 
-            c.gameObject.GetComponent<Rigidbody2D>().AddForce(direction.normalized * knockbackPower * rb.mass);
+            if (c.transform.position.x < transform.position.x && direction.x > 0 ||
+                c.transform.position.x >= transform.position.x && direction.x <= 0)
+                direction.x *= -1;
+
+            Debug.Log(direction * knockbackPower);
+            c.gameObject.GetComponent<Rigidbody2D>().AddForce(direction * knockbackPower);
         }
     }
 }
