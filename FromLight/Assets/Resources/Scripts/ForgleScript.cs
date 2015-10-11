@@ -3,31 +3,54 @@ using System.Collections;
 
 public class ForgleScript : MonoBehaviour {
     public float ForgleSpeed;
-    private GameObject[] waypoints;
+    public GameObject WaypointParent;
+
+    private Transform[] waypoints;
     private int currentWaypointI;
     private Vector2 nextWaypoint;
 
-    void Awake() {
-        loadWaypoints(new GameObject[] {
-                GameObject.Find("WP1 - Forgle"),
-                GameObject.Find("WP2 - Forgle"),
-                GameObject.Find("WP3 - Forgle"),
-            });
+    void Start() {
+        loadWaypoints();
     }
-    public void loadWaypoints(GameObject[] wps) {
-        if (wps.Length < 2)
+    public void loadParentWaypoint(string WayName) {
+        WaypointParent = GameObject.Find(WayName);
+        loadWaypoints();
+    }
+    private void loadWaypoints() {
+        Transform[] temp = WaypointParent.GetComponentsInChildren<Transform>();
+        waypoints = new Transform[temp.Length - 1];
+        int i = 0;
+        foreach (Transform t in temp)
+            if (t.gameObject != WaypointParent)
+                waypoints[i++] = t;
+        shuffleWaypoints();
+
+        if (waypoints.Length < 2)
             Debug.LogError("Less than two waypoints for Forgle");
-        waypoints = wps;
-        transform.position = waypoints[0].transform.position;
+        transform.position = waypoints[0].position;
         currentWaypointI = 0;
         popWaypoint();
+    }
+    private void shuffleWaypoints() {
+        Transform temp;
+        int j;
+        for (int i = 0; i < waypoints.Length; i++) {
+            temp = waypoints[i];
+
+            j = Random.Range(0, waypoints.Length - 1);
+            while (i == j)
+                j = Random.Range(0, waypoints.Length - 1);
+
+            waypoints[i] = waypoints[j];
+            waypoints[j] = temp;
+        }
     }
     private void popWaypoint() {
         int nextWP = currentWaypointI + 1;
         if (nextWP == waypoints.Length)     // cycle through waypoints
             nextWP = 0;
 
-        nextWaypoint = waypoints[nextWP].transform.position;
+        nextWaypoint = waypoints[nextWP].position;
         currentWaypointI = nextWP;
     }
 	void FixedUpdate () {
