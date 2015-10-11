@@ -61,7 +61,7 @@ GameObject:
   - 50: {fileID: 5049948}
   - 233: {fileID: 23366888}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.638999999, y: -.351000011, z: 0}
+  m_LocalPosition: {x: -1.62899995, y: -.623000026, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 480240}
@@ -137,7 +137,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.653999984, y: -.0710000023, z: 0}
+  m_LocalPosition: {x: -1.62100005, y: -.119999997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 480240}
@@ -162,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 191436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.64563847, y: -2.38336611, z: 0}
-  m_LocalScale: {x: 1.77153289, y: 1.77153039, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 486846}
   - {fileID: 476080}
@@ -178,7 +178,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.603473186, z: 0}
+  m_LocalPosition: {x: -.100000001, y: -1.5, z: 0}
   m_LocalScale: {x: .564482868, y: .564483702, z: 1}
   m_Children: []
   m_Father: {fileID: 480240}
@@ -241,9 +241,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.0900000036, y: -.340000004}
+  m_Offset: {x: -.0900000036, y: -.649999976}
   serializedVersion: 2
-  m_Radius: .219999999
+  m_Radius: .699999988
 --- !u!61 &6109456
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -254,9 +254,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.0900000036, y: 0}
+  m_Offset: {x: -.0700000003, y: -0}
   serializedVersion: 2
-  m_Size: {x: .430000007, y: .99000001}
+  m_Size: {x: 1.29999995, y: 2.5}
 --- !u!95 &9578570
 Animator:
   serializedVersion: 3
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MaxSpeed: 8
   m_Acceleration: 1.20000005
-  m_JumpForce: 800
+  m_JumpForce: 1200
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
@@ -366,7 +366,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 50
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8df18245672de1d4a9c8a8d29157dd70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21297152
@@ -405,8 +405,8 @@ DistanceJoint2D:
   serializedVersion: 3
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 5049948}
-  m_Anchor: {x: 0, y: .200000003}
-  m_ConnectedAnchor: {x: 0, y: .0500000007}
+  m_Anchor: {x: 0, y: .400000006}
+  m_ConnectedAnchor: {x: -0, y: 0}
   m_Distance: .100000001
   m_MaxDistanceOnly: 0
 --- !u!233 &23366888
@@ -420,7 +420,7 @@ HingeJoint2D:
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 5050332}
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -.629999995, y: 0}
+  m_ConnectedAnchor: {x: -1.60000002, y: -.0799999982}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -439,8 +439,8 @@ HingeJoint2D:
   serializedVersion: 3
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 5050332}
-  m_Anchor: {x: 0, y: -.200000003}
-  m_ConnectedAnchor: {x: -.629999995, y: -.100000001}
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -2, y: -.100000001}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 100
