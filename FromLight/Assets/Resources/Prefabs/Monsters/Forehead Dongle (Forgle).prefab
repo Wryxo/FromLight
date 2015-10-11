@@ -38,7 +38,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140912}
-  m_Mass: 500
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -71,8 +71,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90de7ac13df8234fb02807a6c4d04a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForgleAcceleration: 2.5
-  ForgleSpeed: 6
+  ForgleAcceleration: 3.5
+  ForgleSpeed: 10
+  knockbackPower: 20
   WaypointParent: {fileID: 0}
 --- !u!212 &21277232
 SpriteRenderer:
