@@ -41,7 +41,7 @@ public class GenerateScript : MonoBehaviour {
         lastCheckpoint = currentCheckpoint;
         Vector3 lastPoint = lastCheckpoint.transform.position;
         // TODO: decide between building blocks and simple transition
-        if (Random.value > 0.5f)
+        if (true)//(Random.value > 0.5f)
         {
             //simple
             Vector3 point = new Vector2(Random.Range(20f,40f), Random.RandomRange(3f,30f));
@@ -65,11 +65,6 @@ public class GenerateScript : MonoBehaviour {
             }
             generateIsland(lastPoint);
         }
-    }
-
-    public void generateSimple()
-    {
-
     }
 
     // TODO: get random
