@@ -6,10 +6,15 @@ public class UIPlayerScript : MonoBehaviour {
 
     private GameObject manaBar;
     private GameObject spellBar;
+    private GameObject deathScreen;
 
-	void Start () {
+    private GenerateScript generator;
+
+    void Start () {
         manaBar = GameObject.FindGameObjectWithTag("ManaBar");
         spellBar = GameObject.FindGameObjectWithTag("SpellBar");
+        deathScreen = GameObject.FindGameObjectWithTag("DeathScreen");
+        generator = GameObject.FindGameObjectWithTag("Generator").GetComponent<GenerateScript>();
         manaBar.GetComponentInChildren<Image>().fillMethod = Image.FillMethod.Radial360;
         manaBar.GetComponentInChildren<Image>().type = Image.Type.Filled;
     }
@@ -31,5 +36,16 @@ public class UIPlayerScript : MonoBehaviour {
             button.GetComponent<Transform>().SetParent(spellBar.GetComponent<Transform>(), false);
             id++;
         }
+    }
+
+    public void showDeathScreen() {
+        //TODO fadein animation
+        deathScreen.GetComponent<CanvasGroup>().alpha = 1;
+    }
+
+    public void reviveButtonCallback() {
+        //TODO fadeout animation
+        deathScreen.GetComponent<CanvasGroup>().alpha = 0;
+        transform.parent.position = generator.lastCheckpoint.transform.position;
     }
 }
