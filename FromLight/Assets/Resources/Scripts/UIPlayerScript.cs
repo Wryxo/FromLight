@@ -8,13 +8,14 @@ public class UIPlayerScript : MonoBehaviour {
     private GameObject spellBar;
     private GameObject deathScreen;
 
-    private GenerateScript generator;
+    public GenerateScript generator;
 
     void Start () {
         manaBar = GameObject.FindGameObjectWithTag("ManaBar");
         spellBar = GameObject.FindGameObjectWithTag("SpellBar");
         deathScreen = GameObject.FindGameObjectWithTag("DeathScreen");
         generator = GameObject.FindGameObjectWithTag("Generator").GetComponent<GenerateScript>();
+        Debug.Break();
         manaBar.GetComponentInChildren<Image>().fillMethod = Image.FillMethod.Radial360;
         manaBar.GetComponentInChildren<Image>().type = Image.Type.Filled;
     }

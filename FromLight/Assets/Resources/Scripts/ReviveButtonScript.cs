@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ReviveButtonScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    UIPlayerScript uiScript;
+
+    // Use this for initialization
+    void Start () {
+        gameObject.GetComponent<Button>().onClick.AddListener(delegate { clickFunction(); });
+        uiScript = GameObject.FindGameObjectWithTag("Player").GetComponent<UIPlayerScript>();
+    }
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	void clickFunction() {
+        uiScript.reviveButtonCallback();
+    }
 }
