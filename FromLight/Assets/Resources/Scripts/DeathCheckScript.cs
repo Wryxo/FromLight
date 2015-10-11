@@ -12,11 +12,12 @@ public class DeathCheckScript : MonoBehaviour {
     // intended to be on a object who's parent is player
 	void Start () {
         transform.localPosition = new Vector3(0,deathOffset);
+        lastYPosition = transform.position.y;
         uiScript = transform.parent.gameObject.GetComponent<UIPlayerScript>();
 	}
 	
 	void Update () {
-        if (transform.position.y <= transform.parent.position.y) {
+        if (transform.position.y >= transform.parent.position.y) {
             //fallen to death
             uiScript.showDeathScreen();
         }
