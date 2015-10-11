@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ForgleScript : MonoBehaviour {
     public float ForgleAcceleration, ForgleSpeed;
+    public int knockbackPower;
     public GameObject WaypointParent;
 
     private Transform[] waypoints;
@@ -68,7 +69,16 @@ public class ForgleScript : MonoBehaviour {
         rb.AddForce(direction * ForgleAcceleration * rb.mass);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, ForgleSpeed * rb.mass);
 	}
-    void onCollisionEnter(Collision2D c) {
-        Debug.Log(c.gameObject.name);
+    void OnCollisionEnter2D(Collision2D c) {
+        if (c.gameObject.tag == "Player") {
+            Vector2 direction = Random.insideUnitCircle.normalized;
+
+            if (c.transform.position.x < transform.position.x && direction.x > 0 ||
+                c.transform.position.x >= transform.position.x && direction.x <= 0)
+                direction.x *= -1;
+
+            Debug.Log(direction * knockbackPower);
+            c.gameObject.GetComponent<Rigidbody2D>().AddForce(direction * knockbackPower);
+        }
     }
 }
