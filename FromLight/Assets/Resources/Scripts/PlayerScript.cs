@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour {
 		if (currentSpell.ManaCost <= Mana){
 			float dist = Vector2.Distance (transform.position, mouse);
 			Vector3 direction = (transform.position - mouse) / dist;
-			var go = Instantiate (Projektil, transform.position - direction*1.1f, transform.rotation) as GameObject;
+			var go = Instantiate (Projektil, transform.Find("Lantern").transform.position/*transform.position - direction*1.1f*/, transform.rotation) as GameObject;
 			var projektil = go.GetComponent<ProjectileScript> ();
 			projektil.load (new Spell(currentSpell));
 			projektil.GetComponent<Rigidbody2D>().AddForce(-direction * ShootForce * forceQuotient, ForceMode2D.Impulse);

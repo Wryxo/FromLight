@@ -7,7 +7,7 @@ public class ProjectileScript : MonoBehaviour {
     public GameObject RedPS, GreenPS, BluePS;
     private Dictionary<string, int> config;
     
-    private BlockScript blok;
+    private string blok;
     private Rigidbody2D rb;
 
     public void load(Spell spell) {
@@ -39,7 +39,8 @@ public class ProjectileScript : MonoBehaviour {
     }
     public void resolve() {
         GameObject b = (GameObject)GameObject.Instantiate(BlockObject, transform.position, Quaternion.identity);
-        b.AddComponent(blok.GetType());
+		GameObject spec = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Blocks/"+blok), transform.position, Quaternion.identity);
+		spec.transform.SetParent (b.transform);
         Destroy(gameObject);
     }
     void OnCollisionEnter2D(Collision2D col) {

@@ -13,13 +13,14 @@ public class MagneticBlockScript : BlockScript{
 		//this.MaxForce = 10f;
 		// TODO: bude pritahovanych naraz maximalne 5 colliderov ?
 		this.collidery = new Collider2D[5];
+		transform.GetComponent<SpriteRenderer> ().sprite = this.Image;
 	}
 	
 	void Update(){
 		Special ();
 		this.Duration -= Time.deltaTime;
 		if (this.Duration < 0) {
-			Destroy(gameObject);
+			Destroy(transform.parent.gameObject);
 		}
 	}
 	
