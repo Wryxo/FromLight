@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class ProjectileScript : MonoBehaviour {
     public GameObject BlockObject;
+    public GameObject BounceBlockObject;
     public GameObject RedPS, GreenPS, BluePS;
     private Dictionary<string, int> config;
     
@@ -16,7 +17,7 @@ public class ProjectileScript : MonoBehaviour {
         blok = spell.Blok;
 
         if (config["bounces"] == 0)
-            GetComponent<Collider2D>().isTrigger = true;
+            gameObject.layer = 15;
         if (config["gravity"] == 0)
             rb.gravityScale = 0;
 
@@ -38,20 +39,28 @@ public class ProjectileScript : MonoBehaviour {
         gops.GetComponent<ParticleSystem>().Play();
     }
     public void resolve() {
-        GameObject b = (GameObject)GameObject.Instantiate(BlockObject, transform.position, Quaternion.identity);
+		GameObject b;
+		if (!blok.Equals ("BounceBlock")) {
+			b = (GameObject)GameObject.Instantiate (BlockObject, transform.position, Quaternion.identity);
+		} else {
+			b = (GameObject)GameObject.Instantiate (BounceBlockObject, transform.position, Quaternion.identity);
+		}
 		GameObject spec = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Blocks/"+blok), b.transform.Find ("PrototypeWhite04x01").GetComponent<SpriteRenderer>().bounds.center, Quaternion.identity);
 		spec.transform.SetParent (b.transform);
         Destroy(gameObject);
     }
     void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.layer == 14)
+            return;
+
         if (config["bounces"] == 1)
-			resolve ();
+			resolve();
 		else {
 			config["bounces"]--;
 		}
     }
 	public int getMagnetic() {
-		return config ["magnetic"];
+		return config["magnetic"];
 	}
 
 	public int getOnFire(){
