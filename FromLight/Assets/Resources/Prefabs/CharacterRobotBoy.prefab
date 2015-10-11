@@ -31,6 +31,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &159768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 401324}
+  - 114: {fileID: 11488164}
+  m_Layer: 0
+  m_Name: DeathCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &186130
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,6 +86,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &401324
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 480240}
+  m_RootOrder: 3
 --- !u!4 &426640
 Transform:
   m_ObjectHideFlags: 1
@@ -101,12 +129,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.64563847, y: -2.38336611, z: 0}
+  m_LocalPosition: {x: -.200000003, y: 2.9000001, z: 0}
   m_LocalScale: {x: 1.77153289, y: 1.77153039, z: 0}
   m_Children:
   - {fileID: 486846}
   - {fileID: 476080}
   - {fileID: 426640}
+  - {fileID: 401324}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &486846
@@ -209,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b977df020ada1b44aeb12d386e3548f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generator: {fileID: 0}
 --- !u!114 &11449522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,6 +266,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db022d320e757b40b7f234085305a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11488164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1326b5e7cd6c0e04c9ba4928feb22fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathOffset: -100
 --- !u!212 &21229686
 SpriteRenderer:
   m_ObjectHideFlags: 1
