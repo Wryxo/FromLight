@@ -7,11 +7,11 @@ public class MagneticBlockScript : BlockScript{
 	private Collider2D[] collidery;
 
 	void Start(){
-		//this.Duration = 7f;
 		//this.Image = new Sprite ();
 		//this.Radius = 10f;
 		//this.MaxForce = 10f;
 		// TODO: bude pritahovanych naraz maximalne 5 colliderov ?
+		this.Duration = 7f;
 		this.collidery = new Collider2D[5];
 		transform.GetComponent<SpriteRenderer> ().sprite = this.Image;
 	}
