@@ -10,6 +10,7 @@ public class ForgleScript : MonoBehaviour {
     private int currentWaypointI;
     private Vector2 nextWaypoint;
     private Rigidbody2D rb;
+    private bool facingRight = true;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -69,6 +70,15 @@ public class ForgleScript : MonoBehaviour {
         rb.AddForce(direction * ForgleAcceleration * rb.mass);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, ForgleSpeed * rb.mass);
 	}
+    void Update() {
+        if (facingRight && rb.velocity.x < 0) {
+            facingRight = false;
+            transform.localScale = new Vector3(-1.0f, 1f, 1f);
+        } else if (!facingRight && rb.velocity.x > 0) {
+            facingRight = true;
+            transform.localScale = new Vector3(1.0f, 1f, 1f);
+        }
+    }
     void OnCollisionEnter2D(Collision2D c) {
         if (c.gameObject.tag == "Player") {
             Vector2 direction = Random.insideUnitCircle.normalized;

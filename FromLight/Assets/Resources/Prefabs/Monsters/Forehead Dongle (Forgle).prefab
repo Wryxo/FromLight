@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 447778}
   - 212: {fileID: 21277232}
-  - 58: {fileID: 5826376}
+  - 60: {fileID: 6010760}
   - 50: {fileID: 5040212}
   - 114: {fileID: 11478862}
   m_Layer: 13
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.5, y: -2.51999998, z: 0}
+  m_LocalPosition: {x: -9.3357048, y: 6.01983833, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,8 +47,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &5826376
-CircleCollider2D:
+--- !u!60 &6010760
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -58,8 +58,43 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: .00999999978
+  m_Points:
+    m_Paths:
+    - - {x: .00266666664, y: .00600000005}
+      - {x: .00800000038, y: .00400000019}
+      - {x: .0172115322, y: .00407177908}
+      - {x: .0203512944, y: .0071217916}
+      - {x: .0199999996, y: .0120000001}
+      - {x: .0196487233, y: .0177743528}
+      - {x: .0149999997, y: .0213333331}
+      - {x: .00833333377, y: .0209999997}
+      - {x: .00266666664, y: .0170000009}
+      - {x: -.00300000003, y: .00833333377}
+      - {x: -.00766666653, y: .0170000009}
+      - {x: -.0104192542, y: .0298935603}
+      - {x: -.0299999993, y: .0203333329}
+      - {x: -.0309999995, y: .00866666622}
+      - {x: -.0253333338, y: -.00999999978}
+      - {x: -.0243333336, y: -.0123333335}
+      - {x: -.0233333334, y: -.0130000003}
+      - {x: -.0133333337, y: -.0126666669}
+      - {x: -.00999999978, y: -.0106666666}
+      - {x: 0, y: .00333333341}
+    - - {x: -.0157961454, y: -.00721277203}
+      - {x: -.00777051924, y: .00496026967}
+      - {x: -.0205563921, y: .00590641983}
+    - - {x: -.0126666669, y: .0133333337}
+      - {x: -.0109999999, y: .0113333333}
+      - {x: -.0123333335, y: .0143333329}
+    - - {x: -.0108128544, y: -.00503070839}
+      - {x: -.0241435617, y: .00413850788}
+      - {x: -.0205269232, y: .0160461701}
+    - - {x: -.0160000008, y: .0240000002}
+      - {x: -.0129782101, y: .00306288712}
+      - {x: -.0183333326, y: .0243333336}
+    - - {x: -.0170000009, y: .0260000005}
+      - {x: -.0173333324, y: .0263333339}
+      - {x: -.0209999997, y: .0236666668}
 --- !u!114 &11478862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ForgleAcceleration: 3.5
   ForgleSpeed: 10
-  knockbackPower: 1500
+  knockbackPower: 1200
   WaypointParent: {fileID: 0}
 --- !u!212 &21277232
 SpriteRenderer:
