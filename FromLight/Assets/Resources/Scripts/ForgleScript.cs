@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class ForgleScript : MonoBehaviour {
-    public float ForgleAcceleration, ForgleSpeed, knockbackPower;
+    public float ForgleAcceleration, ForgleSpeed;
+    public int knockbackPower;
     public GameObject WaypointParent;
 
     private Transform[] waypoints;
@@ -70,13 +71,14 @@ public class ForgleScript : MonoBehaviour {
 	}
     void OnCollisionEnter2D(Collision2D c) {
         if (c.gameObject.tag == "Player") {
-            Vector2 direction = Vector2.up;
-            if (c.transform.position.x <= transform.position.x)
-                direction += Vector2.left * 3;
-            else
-                direction += Vector2.right * 3;
+            Vector2 direction = Random.insideUnitCircle.normalized;
 
-            c.gameObject.GetComponent<Rigidbody2D>().AddForce(direction.normalized * knockbackPower * rb.mass);
+            if (c.transform.position.x < transform.position.x && direction.x > 0 ||
+                c.transform.position.x >= transform.position.x && direction.x <= 0)
+                direction.x *= -1;
+
+            Debug.Log(direction * knockbackPower);
+            c.gameObject.GetComponent<Rigidbody2D>().AddForce(direction * knockbackPower);
         }
     }
 }
