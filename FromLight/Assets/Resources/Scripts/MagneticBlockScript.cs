@@ -26,7 +26,8 @@ public class MagneticBlockScript : BlockScript{
 	
 	//this block attracts enemies
 	public override void Special(){
-		int count = Physics2D.OverlapCircleNonAlloc (transform.position, Radius, collidery, 1 << LayerMask.NameToLayer("Projectile"));
+		int count = Physics2D.OverlapCircleNonAlloc (transform.position, Radius, collidery, (1 << LayerMask.NameToLayer("Projectile")) +
+            (1 << LayerMask.NameToLayer("PassingProjectile")));
 		for (int i = 0; i < count; i++) {
 			if (collidery[i].GetComponent<ProjectileScript>().getMagnetic() > 0) {
 				var rb = collidery[i].attachedRigidbody;
