@@ -2,14 +2,16 @@
 using System.Collections;
 
 public class ForgleScript : MonoBehaviour {
-    public float ForgleSpeed;
+    public float ForgleAcceleration, ForgleSpeed;
     public GameObject WaypointParent;
 
     private Transform[] waypoints;
     private int currentWaypointI;
     private Vector2 nextWaypoint;
+    private Rigidbody2D rb;
 
     void Start() {
+        rb = GetComponent<Rigidbody2D>();
         loadWaypoints();
     }
     public void loadParentWaypoint(string WayName) {
@@ -37,9 +39,9 @@ public class ForgleScript : MonoBehaviour {
         for (int i = 0; i < waypoints.Length; i++) {
             temp = waypoints[i];
 
-            j = Random.Range(0, waypoints.Length - 1);
+            j = Random.Range(0, waypoints.Length);
             while (i == j)
-                j = Random.Range(0, waypoints.Length - 1);
+                j = Random.Range(0, waypoints.Length);
 
             waypoints[i] = waypoints[j];
             waypoints[j] = temp;
@@ -54,8 +56,19 @@ public class ForgleScript : MonoBehaviour {
         currentWaypointI = nextWP;
     }
 	void FixedUpdate () {
-        transform.position = Vector2.Lerp(transform.position, nextWaypoint, Time.deltaTime * ForgleSpeed);
-        if (Vector2.Distance(transform.position, nextWaypoint).CompareTo(0.5f) < 0)
+        Vector2 currPos = transform.position;
+        if (Vector2.Distance(currPos, nextWaypoint).CompareTo(4.0f) < 0)
+            rb.velocity *= 0.95f;
+        if (Vector2.Distance(currPos, nextWaypoint).CompareTo(0.25f) < 0) {
+            rb.velocity = Vector2.zero;
             popWaypoint();
+        }
+
+        Vector2 direction = (nextWaypoint - (Vector2)transform.position).normalized;
+        rb.AddForce(direction * ForgleAcceleration * rb.mass);
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, ForgleSpeed * rb.mass);
 	}
+    void onCollisionEnter(Collision2D c) {
+        Debug.Log(c.gameObject.name);
+    }
 }
