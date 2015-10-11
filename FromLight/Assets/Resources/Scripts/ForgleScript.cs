@@ -86,8 +86,6 @@ public class ForgleScript : MonoBehaviour {
             if (c.transform.position.x < transform.position.x && direction.x > 0 ||
                 c.transform.position.x >= transform.position.x && direction.x <= 0)
                 direction.x *= -1;
-
-            Debug.Log(direction * knockbackPower);
             c.gameObject.GetComponent<Rigidbody2D>().AddForce(direction * knockbackPower);
         }
     }
