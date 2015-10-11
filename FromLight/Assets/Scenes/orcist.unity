@@ -99,7 +99,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &29422815
 Transform:
   m_ObjectHideFlags: 0
@@ -185,9 +185,9 @@ Prefab:
       propertyPath: WaypointParent
       value: 
       objectReference: {fileID: 29422814}
-    - target: {fileID: 11478862, guid: 5cb78389c4896844e9509b543d25bc8c, type: 2}
-      propertyPath: knockbackPower
-      value: 2000
+    - target: {fileID: 140912, guid: 5cb78389c4896844e9509b543d25bc8c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5cb78389c4896844e9509b543d25bc8c, type: 2}
@@ -513,6 +513,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 29422815}
   m_RootOrder: 0
+--- !u!1 &905306888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 905306889}
+  m_Layer: 0
+  m_Name: Oosa SP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &905306889
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 905306888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.5300007, y: .550000012, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1001 &1013403444
 Prefab:
   m_ObjectHideFlags: 0
@@ -598,6 +625,156 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7345f81234bf5fd40b4f9fea6cd59cb7, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1042621804
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 14.1400003
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .620000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439496, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: SwarmParent
+      value: 
+      objectReference: {fileID: 905306888}
+    - target: {fileID: 167334, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_Name
+      value: Medusa (Oosa) (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1146468706
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 14.3599997
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.58999991
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439496, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: SwarmParent
+      value: 
+      objectReference: {fileID: 905306888}
+    - target: {fileID: 167334, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_Name
+      value: Medusa (Oosa) (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1154341092
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 12.0100002
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.01000023
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439496, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: SwarmParent
+      value: 
+      objectReference: {fileID: 905306888}
+    - target: {fileID: 167334, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_Name
+      value: Medusa (Oosa) (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1260695114
 Prefab:
@@ -791,4 +968,54 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b46967c3e1431e346a8f6d86be652eba, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &2101475908
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 17.8600006
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.86999989
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 422248, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439496, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: SwarmParent
+      value: 
+      objectReference: {fileID: 905306888}
+    - target: {fileID: 167334, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
+      propertyPath: m_Name
+      value: Medusa (Oosa) (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7791872c9a98aa44691dd53cfc575e55, type: 2}
   m_IsPrefabParent: 0

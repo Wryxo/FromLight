@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ForgleAcceleration: 3.5
   ForgleSpeed: 10
-  knockbackPower: 1200
+  knockbackPower: 2000
   WaypointParent: {fileID: 0}
 --- !u!212 &21277232
 SpriteRenderer:

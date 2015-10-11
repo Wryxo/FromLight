@@ -16,7 +16,7 @@ public class ProjectileScript : MonoBehaviour {
         blok = spell.Blok;
 
         if (config["bounces"] == 0)
-            GetComponent<Collider2D>().isTrigger = true;
+            gameObject.layer = 15;
         if (config["gravity"] == 0)
             rb.gravityScale = 0;
 
@@ -44,14 +44,17 @@ public class ProjectileScript : MonoBehaviour {
         Destroy(gameObject);
     }
     void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.layer == 14)
+            return;
+
         if (config["bounces"] == 1)
-			resolve ();
+			resolve();
 		else {
 			config["bounces"]--;
 		}
     }
 	public int getMagnetic() {
-		return config ["magnetic"];
+		return config["magnetic"];
 	}
 
 	public int getOnFire(){
