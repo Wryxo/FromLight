@@ -12,6 +12,8 @@ TagManager:
   - Safespot
   - ManaBar
   - SpellBar
+  - DeathScreen
+  - Generator
   layers:
   - Default
   - TransparentFX
