@@ -26,7 +26,6 @@ public class UIPlayerScript : MonoBehaviour {
     public void ReplaceSpellButtons() {
         int id = 0;
         spellBar = spellBar ?? GameObject.FindGameObjectWithTag("SpellBar");
-        Debug.Log(spellBar);
         foreach (Transform child in spellBar.transform) {
             Destroy(child.gameObject);
         }
@@ -43,11 +42,14 @@ public class UIPlayerScript : MonoBehaviour {
         deathScreen.GetComponent<CanvasGroup>().alpha = 1;
     }
 
-    public void reviveButtonCallback() {
+    public void hideDeathScreen() {
         //TODO fadeout animation
-        Debug.Log(generator);
-        Debug.Log(generator.lastCheckpoint);
-        transform.position = generator.lastCheckpoint.transform.position;
         deathScreen.GetComponent<CanvasGroup>().alpha = 0;
+    }
+
+    public void reviveButtonCallback() {
+        transform.position = generator.lastCheckpoint.transform.position;
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        gameObject.GetComponentInChildren<DeathCheckScript>().resetToOffset();
     }
 }

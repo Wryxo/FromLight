@@ -57,10 +57,20 @@ public class ProjectileScript : MonoBehaviour {
 	public int getOnFire(){
 		return config["onFire"];
 	}
+
     void FixedUpdate() {
         rb.velocity *= (1f - ((float)config["slowDown"]) / 100f);
 		if (Mathf.Abs(rb.velocity.x) < 0.2f && rb.velocity.magnitude < 5f && config["slowDown"] != 0) {
 			resolve();
 		}
+    }
+
+    void Update() {
+        garbageCollect();
+    }
+
+    // "killnet" for lost projectiles
+    private void garbageCollect() {
+        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position)>100f) Destroy(gameObject); 
     }
 }
