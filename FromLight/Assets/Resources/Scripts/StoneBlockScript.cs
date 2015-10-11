@@ -5,7 +5,7 @@ public class StoneBlockScript : BlockScript
 {
 		void Start(){
 			this.Duration = 20f;
-			this.Image = new Sprite();
+			transform.GetComponent<SpriteRenderer> ().sprite = this.Image;
 		}
 
 		void Update(){

@@ -39,7 +39,7 @@ public class ProjectileScript : MonoBehaviour {
     }
     public void resolve() {
         GameObject b = (GameObject)GameObject.Instantiate(BlockObject, transform.position, Quaternion.identity);
-		GameObject spec = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Blocks/"+blok), transform.position, Quaternion.identity);
+		GameObject spec = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Blocks/"+blok), b.transform.Find ("PrototypeWhite04x01").GetComponent<SpriteRenderer>().bounds.center, Quaternion.identity);
 		spec.transform.SetParent (b.transform);
         Destroy(gameObject);
     }
