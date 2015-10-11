@@ -6,12 +6,8 @@ public class GenerateScript : MonoBehaviour {
 
     public const int test_distance = 30;
 
-    public GameObject lastCheckpoint;
     public GameObject currentCheckpoint;
 
-    public List<GameObject> blocks = new List<GameObject>();
-    public List<GameObject> safeSpots = new List<GameObject>();
-    public List<List<GameObject>> stageLists = new List<List<GameObject>>();
     public List<GameObject> levelSegments = new List<GameObject>();
 
     // init first 3 segments, generate first two, TODO nicerer
@@ -22,10 +18,9 @@ public class GenerateScript : MonoBehaviour {
 
     public void generateSegment() {
         GameObject nextSegment = Instantiate(Resources.Load("Prefabs/Generator/LevelSegment", typeof(GameObject))) as GameObject;
-        nextSegment.GetComponent<LevelSegmentScript>().InitSegment(1, currentCheckpoint, true);
+        nextSegment.GetComponent<LevelSegmentScript>().InitSegment(1, currentCheckpoint, Random.value > 0.5 ? true : false);
         levelSegments.Add(nextSegment);
         int l = levelSegments.Count;
-        Debug.Log(l);
         currentCheckpoint = levelSegments[l - 1].GetComponent<LevelSegmentScript>().generate();
         if (levelSegments.Count > 4) {
             GameObject ls = levelSegments[0]; // TODO check if this is necessary
@@ -36,7 +31,10 @@ public class GenerateScript : MonoBehaviour {
 
 	void Update () {
         if (Input.GetKeyDown("x")) {
+            //test, set at checkpoints
             generateSegment();
+            levelSegments[levelSegments.Count - 1].GetComponent<LevelSegmentScript>().SetPlayerSpellset();
+            levelSegments[levelSegments.Count - 1].GetComponent<LevelSegmentScript>().SetPlayerManaCap();
         }
     }
 

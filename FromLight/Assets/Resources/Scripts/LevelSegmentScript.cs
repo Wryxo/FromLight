@@ -27,7 +27,7 @@ public class LevelSegmentScript : MonoBehaviour {
         size = _size;
         checkpoint = _check;
         horizontalDirection = _initDir;
-        manaCap = 100; // TODO check this with default player mana at the start
+        manaCap = 0;
     }
 	
     public GameObject generate() {
@@ -40,17 +40,18 @@ public class LevelSegmentScript : MonoBehaviour {
             //simple
             Vector3 point = new Vector2(Random.Range(20f, 40f), Random.RandomRange(3f, 30f));
             if (Random.value > 0.5f) point.x = -1f * point.x;
+            manaCap += 100; //TODO check if is enough
             return generateIsland(checkpoint.transform.position + point);
-            //simple transition always with same blocks as previous
         } else {
             for (int i = 0; i < size; i++) {
                 GameObject stage;
                 //stages - always generate towards the direction opposite to the one player just came from
                 stage = horizontalDirection ? getLeftStage() : getRightStage();
-                if (!stage.GetComponent<StageScript>().TrySpellset(RequiredSpells, ForbiddenSpells)) {
+                if (!stage.GetComponent<StageScript>().TrySpellset(ref RequiredSpells, ref ForbiddenSpells)) {
                     Destroy(stage);
                     continue;
                 }
+                manaCap += stage.GetComponent<StageScript>().RequiredMana;
                 //the start point of a stage should always be 0,0,0 (relative to the stage parent object)
                 stage.transform.position = lastPoint;
                 lastPoint = stage.transform.Find("ExitPoint").position;
@@ -63,6 +64,7 @@ public class LevelSegmentScript : MonoBehaviour {
     private GameObject getLeftStage() {
         GameObject stage = Instantiate(Resources.Load("Prefabs/Generator/Stages/Left/TestLeftStage", typeof(GameObject))) as GameObject;
         stage.transform.SetParent(transform, true);
+        stage.GetComponent<StageScript>().LoadEnum();
         return stage;
     }
 
@@ -70,6 +72,7 @@ public class LevelSegmentScript : MonoBehaviour {
     private GameObject getRightStage() {
         GameObject stage = Instantiate(Resources.Load("Prefabs/Generator/Stages/Right/TestRightStage", typeof(GameObject))) as GameObject;
         stage.transform.SetParent(transform, true);
+        stage.GetComponent<StageScript>().LoadEnum();
         return stage;
     }
 
@@ -85,8 +88,9 @@ public class LevelSegmentScript : MonoBehaviour {
         return nextCheckpoint;
     }
 
+    //TODO change to some basic set if there are no required spells ?
     public void SetPlayerSpellset() {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().AvailableSpells = RequiredSpells;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().AvailableSpells = RequiredSpells.Count > 0 ? RequiredSpells : GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().AvailableSpells;
     }
 
     public void SetPlayerManaCap() {

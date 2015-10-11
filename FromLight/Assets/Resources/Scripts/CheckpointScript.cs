@@ -13,11 +13,21 @@ public class CheckpointScript : MonoBehaviour {
 	
 	}
 
-    /*void OnCollisionEnter2D(Collision2D c) {
+    void OnTriggerEnter2D(Collider2D c) {
+        Debug.Log("wheeeej");
         if (c.gameObject.tag == "Player") {
-            if (transform.parent != null) {
-                transform.parent.gameObject.GetComponent<StageScript>().set
+            c.gameObject.GetComponent<PlayerScript>().LastCheckpoint = gameObject;
+            if (transform.parent != null && transform.parent.parent != null) {
+                // checkpoint.stage.levelsegment.setWhat'sNeeded
+                Debug.Log("whaaaj");
+                transform.parent.parent.gameObject.GetComponent<LevelSegmentScript>().SetPlayerSpellset();
+                transform.parent.parent.gameObject.GetComponent<LevelSegmentScript>().SetPlayerManaCap();
+            } else {
+                Debug.Log(":((");
+                //simple, random stage, levelsegment is direct parent
+                transform.parent.gameObject.GetComponent<LevelSegmentScript>().SetPlayerSpellset();
+                transform.parent.gameObject.GetComponent<LevelSegmentScript>().SetPlayerManaCap();
             }
         }
-    }*/
+    }
 }

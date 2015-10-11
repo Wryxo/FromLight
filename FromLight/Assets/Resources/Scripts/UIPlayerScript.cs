@@ -48,7 +48,7 @@ public class UIPlayerScript : MonoBehaviour {
     }
 
     public void reviveButtonCallback() {
-        transform.position = generator.lastCheckpoint.transform.position;
+        transform.position = gameObject.GetComponent<PlayerScript>().LastCheckpoint.transform.position;
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         gameObject.GetComponentInChildren<DeathCheckScript>().resetToOffset();
         gameObject.GetComponent<PlayerScript>().Mana = gameObject.GetComponent<PlayerScript>().ManaCap;
