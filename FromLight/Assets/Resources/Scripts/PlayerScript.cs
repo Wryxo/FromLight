@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerScript : MonoBehaviour {
-    public uint Mana, ManaCap, ManaRegen;
+    public uint Mana, ManaCap;
     public List<Spell> AvailableSpells;
     public int SelectedSpell = 0;
     public GameObject Projektil;
@@ -19,14 +19,6 @@ public class PlayerScript : MonoBehaviour {
         AvailableSpells.Add(Spell.SpellBook["Spell3"]);
         gameObject.GetComponent<UIPlayerScript>().ReplaceSpellButtons();
         Mana = ManaCap;
-    }
-
-    void Update() {
-        sec += Time.deltaTime;
-        if (sec > 1f) {
-            Mana = (uint)Mathf.Clamp(Mana + ManaRegen, 0, ManaCap);
-            sec = 0;
-        }
     }
 
     public void ReplaceSpells(List<Spell> spells) {
