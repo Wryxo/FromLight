@@ -32,6 +32,6 @@ public class StageScript : MonoBehaviour {
         //TODO - actual functionality
         AvailibleSpells.Clear();
         AvailibleSpells.AddRange(RequiredSpells);
-        return false;
+        return true;
     }
 }

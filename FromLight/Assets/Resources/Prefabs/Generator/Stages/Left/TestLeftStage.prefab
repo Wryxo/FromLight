@@ -166,6 +166,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 462354}
+  - 114: {fileID: 11422698}
   m_Layer: 0
   m_Name: TestLeftStage
   m_TagString: Stage
@@ -451,6 +452,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .0789461583, y: .630895197}
+--- !u!114 &11422698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0a7cd6e0d5d7645a09515bc4fea4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellSet: 0
 --- !u!212 &21209224
 SpriteRenderer:
   m_ObjectHideFlags: 1
