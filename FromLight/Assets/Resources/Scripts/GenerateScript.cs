@@ -12,82 +12,32 @@ public class GenerateScript : MonoBehaviour {
     public List<GameObject> blocks = new List<GameObject>();
     public List<GameObject> safeSpots = new List<GameObject>();
     public List<List<GameObject>> stageLists = new List<List<GameObject>>();
+    public List<GameObject> levelSegments = new List<GameObject>();
 
-    void Awake()
-    {
+    // init first 3 segments, generate first two, TODO nicerer
+	void Start () {
         currentCheckpoint = GameObject.FindGameObjectWithTag("InitialCheckpoint");
-        safeSpots.Add(GameObject.FindGameObjectWithTag("InitialSafespot"));
+        for (int i = 0; i < 3; i++) generateSegment();
     }
 
-	void Start () {
-        //generate first
-        generateNextPoint();
-	}
-	
+    public void generateSegment() {
+        GameObject nextSegment = Instantiate(Resources.Load("Prefabs/Generator/LevelSegment", typeof(GameObject))) as GameObject;
+        nextSegment.GetComponent<LevelSegmentScript>().InitSegment(1, currentCheckpoint, true);
+        levelSegments.Add(nextSegment);
+        int l = levelSegments.Count;
+        Debug.Log(l);
+        currentCheckpoint = levelSegments[l - 1].GetComponent<LevelSegmentScript>().generate();
+        if (levelSegments.Count > 4) {
+            GameObject ls = levelSegments[0]; // TODO check if this is necessary
+            levelSegments.RemoveAt(0);
+            Destroy(ls);
+        }
+    }
+
 	void Update () {
         if (Input.GetKeyDown("x")) {
-            generateNextPoint();
+            generateSegment();
         }
-    }
-
-    public void generateNextPoint() {
-        //horizontalDirection == true => came from right, else came from left - if lastCheckpoint is unset, choose whichever
-        bool horizontalDirection = (lastCheckpoint == null) ? Random.value>0.5f : lastCheckpoint.transform.position.x > currentCheckpoint.transform.position.x;
-        // destroy previous path
-        if (lastCheckpoint != null) Destroy(lastCheckpoint);
-        foreach(var block in blocks) {
-            Destroy(block);
-        }
-        lastCheckpoint = currentCheckpoint;
-        Vector3 lastPoint = lastCheckpoint.transform.position;
-        // TODO: decide between building blocks and simple transition
-        if (true)//(Random.value > 0.5f)
-        {
-            //simple
-            Vector3 point = new Vector2(Random.Range(20f,40f), Random.RandomRange(3f,30f));
-            if (Random.value > 0.5f) point.x = -1f * point.x;
-            generateIsland(point);
-            //simple transition always with same blocks as previous
-        } else
-        {
-            // TODO make this less random
-            int limit = Random.RandomRange(1,3);
-            for (int i=0;i< limit;i++)
-            {
-                GameObject stage;
-                //stages - always generate towards the direction opposite to the one player just came from
-                do {
-                    stage = horizontalDirection ? getLeftStage() : getRightStage();
-                } while (!stage.GetComponent<StageScript>().TrySpellset(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().AvailableSpells));
-                //the start point of a stage should always be 0,0,0 (relative to the stage parent object)
-                stage.transform.position = lastPoint;
-                lastPoint = stage.transform.Find("ExitPoint").position;
-            }
-            generateIsland(lastPoint);
-        }
-    }
-
-    // TODO: get random
-    private GameObject getLeftStage()
-    {
-        return Instantiate(Resources.Load("Prefabs/Generator/Stages/Left/TestLeftStage", typeof(GameObject))) as GameObject;
-    }
-
-    // TODO: get random
-    private GameObject getRightStage()
-    {
-        return Instantiate(Resources.Load("Prefabs/Generator/Stages/Right/TestRightStage", typeof(GameObject))) as GameObject;
-    }
-
-    private void generateIsland(Vector2 point)
-    {
-        currentCheckpoint = Instantiate(Resources.Load("Prefabs/Generator/Checkpoint", typeof(GameObject))) as GameObject;
-        currentCheckpoint.transform.position = point;
-        GameObject safeSpot = Instantiate(Resources.Load("Prefabs/Blocks/SafespotPlacehold", typeof(GameObject))) as GameObject;
-        point.y = point.y - 1.2f;
-        point.x = point.x - 1.2f;
-        safeSpot.transform.position = point;
-        safeSpots.Add(safeSpot);
     }
 
 }

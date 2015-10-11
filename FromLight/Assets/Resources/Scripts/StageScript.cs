@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class StageScript : MonoBehaviour {
     public enum SpellSetEnum {Basic};
     public SpellSetEnum SpellSet;  
     List<Spell> RequiredSpells = new List<Spell>();
     List<Spell> ForbiddenSpells = new List<Spell>();
+    public uint RequiredMana;
 
     void Start() {
         //in case enum was set in prefab, load here
@@ -28,10 +30,13 @@ public class StageScript : MonoBehaviour {
 
     //tries to add spells required for this stage
     //returns false if impossible
-    public bool TrySpellset(List<Spell> AvailibleSpells) {
-        //TODO - actual functionality
-        AvailibleSpells.Clear();
-        AvailibleSpells.AddRange(RequiredSpells);
+    public bool TrySpellset(List<Spell> AvailableSpells, List<Spell> RestrictedSpells) {
+        IEnumerable<Spell> list1 = AvailableSpells.Intersect(ForbiddenSpells);
+        IEnumerable<Spell> list2 = RestrictedSpells.Intersect(AvailableSpells);
+        if (list1.Count() > 0 || list2.Count() > 0) return false;
+        RequiredSpells = RequiredSpells.Union(AvailableSpells).ToList();
+        ForbiddenSpells = ForbiddenSpells.Union(RestrictedSpells).ToList();
         return true;
     }
+
 }
