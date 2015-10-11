@@ -11,7 +11,7 @@ public class StoneBlockScript : BlockScript
 		void Update(){
 			this.Duration -= Time.deltaTime;
 			if (this.Duration < 0) {
-				Destroy(gameObject);
+				Destroy(transform.parent.gameObject);
 			}
 		}
 		
