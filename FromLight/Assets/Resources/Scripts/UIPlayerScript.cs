@@ -51,5 +51,6 @@ public class UIPlayerScript : MonoBehaviour {
         transform.position = generator.lastCheckpoint.transform.position;
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         gameObject.GetComponentInChildren<DeathCheckScript>().resetToOffset();
+        gameObject.GetComponent<PlayerScript>().Mana = gameObject.GetComponent<PlayerScript>().ManaCap;
     }
 }
