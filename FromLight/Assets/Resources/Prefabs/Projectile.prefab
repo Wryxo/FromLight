@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BlockObject: {fileID: 156774, guid: 6f4908046a14b324ebedc9c911d40622, type: 2}
+  BounceBlockObject: {fileID: 194190, guid: f0ac012224de2584d83dcb90217465da, type: 2}
   RedPS: {fileID: 164970, guid: c9b2af40d4933f44cac166bbdf401400, type: 2}
   GreenPS: {fileID: 144122, guid: 503157a3f78bb3d4c98537491df42bc5, type: 2}
   BluePS: {fileID: 114188, guid: d8a46307147ea88468e7f81613e14cbe, type: 2}
@@ -133,6 +134,10 @@ Prefab:
       propertyPath: RedPS
       value: 
       objectReference: {fileID: 164970, guid: c9b2af40d4933f44cac166bbdf401400, type: 2}
+    - target: {fileID: 0}
+      propertyPath: BounceBlockObject
+      value: 
+      objectReference: {fileID: 194190, guid: f0ac012224de2584d83dcb90217465da, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152586}

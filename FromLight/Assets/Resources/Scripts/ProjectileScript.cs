@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class ProjectileScript : MonoBehaviour {
     public GameObject BlockObject;
+    public GameObject BounceBlockObject;
     public GameObject RedPS, GreenPS, BluePS;
     private Dictionary<string, int> config;
     
@@ -38,7 +39,12 @@ public class ProjectileScript : MonoBehaviour {
         gops.GetComponent<ParticleSystem>().Play();
     }
     public void resolve() {
-        GameObject b = (GameObject)GameObject.Instantiate(BlockObject, transform.position, Quaternion.identity);
+		GameObject b;
+		if (!blok.Equals ("BounceBlock")) {
+			b = (GameObject)GameObject.Instantiate (BlockObject, transform.position, Quaternion.identity);
+		} else {
+			b = (GameObject)GameObject.Instantiate (BounceBlockObject, transform.position, Quaternion.identity);
+		}
 		GameObject spec = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Blocks/"+blok), b.transform.Find ("PrototypeWhite04x01").GetComponent<SpriteRenderer>().bounds.center, Quaternion.identity);
 		spec.transform.SetParent (b.transform);
         Destroy(gameObject);
