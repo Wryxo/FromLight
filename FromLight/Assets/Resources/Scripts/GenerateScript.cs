@@ -32,7 +32,7 @@ public class GenerateScript : MonoBehaviour {
 
     public void generateNextPoint() {
         //horizontalDirection == true => came from right, else came from left - if lastCheckpoint is unset, choose whichever
-        bool horizontalDirection = (lastCheckpoint == null) ? Random.value>0.5f : lastCheckpoint.transform.position.x > currentCheckpoint.transform.position.x;
+        bool horizontalDirection = true; //(lastCheckpoint == null) ? Random.value>0.5f : lastCheckpoint.transform.position.x > currentCheckpoint.transform.position.x;
         // destroy previous path
         if (lastCheckpoint != null) Destroy(lastCheckpoint);
         foreach(var block in blocks) {
@@ -41,17 +41,17 @@ public class GenerateScript : MonoBehaviour {
         lastCheckpoint = currentCheckpoint;
         Vector3 lastPoint = lastCheckpoint.transform.position;
         // TODO: decide between building blocks and simple transition
-        if (true)//(Random.value > 0.5f)
+        if (false)//(Random.value > 0.5f)
         {
             //simple
-            Vector3 point = new Vector2(Random.Range(20f,40f), Random.RandomRange(3f,30f));
+            Vector3 point = new Vector2(Random.Range(20f,40f), Random.Range(3f,30f));
             if (Random.value > 0.5f) point.x = -1f * point.x;
             generateIsland(point);
             //simple transition always with same blocks as previous
         } else
         {
             // TODO make this less random
-            int limit = Random.RandomRange(1,3);
+            int limit = Random.Range(1,3);
             for (int i=0;i< limit;i++)
             {
                 GameObject stage;
@@ -70,7 +70,7 @@ public class GenerateScript : MonoBehaviour {
     // TODO: get random
     private GameObject getLeftStage()
     {
-        return Instantiate(Resources.Load("Prefabs/Generator/Stages/Left/TestLeftStage", typeof(GameObject))) as GameObject;
+        return Instantiate(Resources.Load("Prefabs/Generator/Stages/Left/JumpOnlyStage", typeof(GameObject))) as GameObject;
     }
 
     // TODO: get random
