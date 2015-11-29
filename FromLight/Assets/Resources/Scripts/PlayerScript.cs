@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour {
     public List<Spell> AvailableSpells;
     public int SelectedSpell = 0;
     public GameObject Projektil;
+    public GameObject LastCheckpoint;
     public int ShootForce = 5;
 
     private GameObject player;
@@ -19,6 +20,7 @@ public class PlayerScript : MonoBehaviour {
         AvailableSpells.Add(Spell.SpellBook["Spell3"]);
         gameObject.GetComponent<UIPlayerScript>().ReplaceSpellButtons();
         Mana = ManaCap;
+        LastCheckpoint = GameObject.FindGameObjectWithTag("InitialCheckpoint");
     }
 
     public void ReplaceSpells(List<Spell> spells) {
