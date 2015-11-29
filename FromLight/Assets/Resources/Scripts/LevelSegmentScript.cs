@@ -38,9 +38,9 @@ public class LevelSegmentScript : MonoBehaviour {
         Vector3 lastPoint = checkpoint.transform.position;
         if (Random.value > 0.5f) {
             //simple
-            Vector3 point = new Vector2(Random.Range(20f, 40f), Random.RandomRange(3f, 30f));
+            Vector3 point = new Vector2(Random.Range(20f, 40f), Random.Range(3f, 30f));
             if (Random.value > 0.5f) point.x = -1f * point.x;
-            manaCap += 100; //TODO check if is enough
+            manaCap += 10000; //TODO check if is enough
             return generateIsland(checkpoint.transform.position + point);
         } else {
             for (int i = 0; i < size; i++) {
@@ -62,7 +62,7 @@ public class LevelSegmentScript : MonoBehaviour {
 
     // TODO: get random
     private GameObject getLeftStage() {
-        GameObject stage = Instantiate(Resources.Load("Prefabs/Generator/Stages/Left/TestLeftStage", typeof(GameObject))) as GameObject;
+        GameObject stage = Instantiate(Resources.Load("Prefabs/Generator/Stages/Left/JumpOnlyStage", typeof(GameObject))) as GameObject;
         stage.transform.SetParent(transform, true);
         stage.GetComponent<StageScript>().LoadEnum();
         return stage;
@@ -70,7 +70,7 @@ public class LevelSegmentScript : MonoBehaviour {
 
     // TODO: get random
     private GameObject getRightStage() {
-        GameObject stage = Instantiate(Resources.Load("Prefabs/Generator/Stages/Right/TestRightStage", typeof(GameObject))) as GameObject;
+        GameObject stage = Instantiate(Resources.Load("Prefabs/Generator/Stages/Right/JumpOnlyRStage", typeof(GameObject))) as GameObject;
         stage.transform.SetParent(transform, true);
         stage.GetComponent<StageScript>().LoadEnum();
         return stage;
@@ -78,7 +78,7 @@ public class LevelSegmentScript : MonoBehaviour {
 
     private GameObject generateIsland(Vector2 point) {
         nextCheckpoint = Instantiate(Resources.Load("Prefabs/Generator/Checkpoint", typeof(GameObject))) as GameObject;
-        nextCheckpoint.transform.position = point;
+        nextCheckpoint.transform.position = new Vector3(point.x, point.y + 3);
         nextCheckpoint.transform.SetParent(transform, true);
         GameObject safeSpot = Instantiate(Resources.Load("Prefabs/Blocks/BlockObject", typeof(GameObject))) as GameObject;
         safeSpot.transform.SetParent(transform, true);
